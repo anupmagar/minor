@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Nav from "../components/Navb";
 import { redirect } from "react-router-dom";
+import axios from 'axios';
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -10,7 +11,7 @@ const Login = (props) => {
   const submit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:8000/api/login", {
+    const response = await fetch("http://127.0.0.1:8000/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
