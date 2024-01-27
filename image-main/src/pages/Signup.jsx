@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { redirect } from "react-router-dom";
+import Nav from "../components/Navb";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirects, setRedirects] = useState(false);
+  const [showPass, setShowPass] = useState(false);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -28,36 +30,65 @@ const Signup = () => {
   }
 
   return (
-    <form onSubmit={submit}>
-      <h1 className="h3 mb-3 fw-normal">Please register</h1>
+    <>
+      <Nav />
+      <div className="-z-10 shadow-md border-2 w-[25rem] felx  flex-col p-5 justify-center h-[25rem] px-10 absolute top-[50%] left-[50%]  translate-x-[-50%] translate-y-[-50%] ">
+        <form
+          onSubmit={submit}
+          className="flex flex-col justify-center items-center gap-y-4"
+        >
+          <h2 className="h3 mb-4 ">Please register</h2>
 
-      <input
-        className="form-control"
-        placeholder="Name"
-        required
-        onChange={(e) => setName(e.target.value)}
-      />
+          <input
+            className="border-2 border-black rounded-md px-2 py-1 w-72"
+            placeholder="Name"
+            required
+            onChange={(e) => setName(e.target.value)}
+          />
 
-      <input
-        type="email"
-        className="form-control"
-        placeholder="Email address"
-        required
-        onChange={(e) => setEmail(e.target.value)}
-      />
+          <input
+            type="email"
+            className="border-2 border-black rounded-md px-2 py-1 w-72"
+            placeholder="Email address"
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-      <input
-        type="password"
-        className="form-control"
-        placeholder="Password"
-        required
-        onChange={(e) => setPassword(e.target.value)}
-      />
-
-      <button className="w-100 btn btn-lg btn-primary" type="submit">
-        Submit
-      </button>
-    </form>
+          <input
+            type={showPass ? "text" : "password"}
+            className="border-2 border-black rounded-md px-2 py-1 w-72"
+            placeholder="Password"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <label>
+            <input
+              type="checkbox"
+              value={showPass}
+              onChange={() => {
+                setShowPass(!showPass);
+              }}
+            />
+            Show password
+          </label>
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded px-4 py-2"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+        <p className="text-center mt-8">
+          Already have a account?{" "}
+          <a
+            href="/signup"
+            className="font-bold hover:underline cursor-pointer"
+          >
+            Log in
+          </a>
+        </p>
+      </div>
+    </>
   );
 };
 
