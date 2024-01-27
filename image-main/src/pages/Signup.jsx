@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Nav from "../components/Navb";
 import { redirect } from "react-router-dom";
-import Nav from "../components/Navb";
+
 
 const Signup = () => {
   const [name, setName] = useState("");
