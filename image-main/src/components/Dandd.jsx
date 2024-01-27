@@ -28,40 +28,53 @@ const Dandd = () => {
 
   if (files) {
     return (
-      <div className="flex flex-col justify-center items-center ">
+      <div className="flex flex-col justify-center items-center rounded-2xl absolute top-[50%] left-[50%]  translate-x-[-50%] translate-y-[-50%]  w-80 shadow-2xl h-60">
         <ul>
           {Array.from(files).map((file, idx) => (
             <li key={idx}>{file.name}</li>
           ))}
         </ul>
-        <div className="actions">
-          <button onClick={() => setFiles(null)}>Cancel</button>
-          <button onClick={handleUpload}>Upload</button>
+        <div className="mt-4">
+          <button
+            onClick={() => setFiles(null)}
+            className="bg-blue-500 mr-5 py-2 px-4 rounded-xl"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={handleUpload}
+            className="bg-blue-500 px-4 py-2 rounded-xl "
+          >
+            Upload
+          </button>
         </div>
       </div>
     );
   }
 
   return (
-    <>
-      <div
-        className="flex flex-col justify-center items-center h-50 border-dashed border-blue-700"
-        onDragOver={handleDragOver}
-        onDrop={handleDrop}
+    <div
+      className="flex flex-col justify-center items-center rounded-2xl absolute top-[50%] left-[50%]  translate-x-[-50%] translate-y-[-50%]  w-80 shadow-2xl h-60"
+      onDragOver={handleDragOver}
+      onDrop={handleDrop}
+    >
+      <p>Drag and Drop Files to Upload</p>
+      <p>Or</p>
+      <input
+        type="file"
+        multiple
+        onChange={(event) => setFiles(event.target.files)}
+        hidden
+        accept="image/png, image/jpeg"
+        ref={inputRef}
+      />
+      <button
+        onClick={() => inputRef.current.click()}
+        className="bg-blue-800 text-white font-bold rounded-full px-4 py-2"
       >
-        <p>Drag and Drop Files to Upload</p>
-        <p>Or</p>
-        <input
-          type="file"
-          multiple
-          onChange={(event) => setFiles(event.target.files)}
-          hidden
-          accept="image/png, image/jpeg"
-          ref={inputRef}
-        />
-        <button onClick={() => inputRef.current.click()}>Select Files</button>
-      </div>
-    </>
+        Select Files
+      </button>
+    </div>
   );
 };
 
