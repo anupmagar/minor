@@ -74,7 +74,7 @@ const Login = (props) => {
           </button>
         </form>
         <p className="text-center mt-8">
-          Not signd up yet?{" "}
+          Not signed up yet?{" "}
           <a
             href="/signup"
             className="font-bold hover:underline cursor-pointer"

@@ -67,6 +67,8 @@ TEMPLATES = [
         'DIRS': [
             BASE_DIR / 'image-main/dist/'
         ],
+        # 'DIRS': [BASE_DIR.joinpath('image-main')],
+        
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -146,10 +148,16 @@ CORS_ALLOW_CREDENTIALS = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'image-main/dist/assets',
+    BASE_DIR.joinpath('image-main','dist', 'assets')
+    #BASE_DIR / 'image-main/dist/assets',
 ]
 
 STATIC_ROOT = os.path.join (BASE_DIR , "staticfiles")
+
+# #STATICFILES_DIRS = (
+#     BASE_DIR.joinpath('image-main','dist')
+# )
+
 
 REST_FRAMEWORK = {
 
@@ -169,3 +177,4 @@ REST_FRAMEWORK = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'api.User'
+

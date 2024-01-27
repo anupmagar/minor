@@ -82,7 +82,7 @@ const Signup = () => {
         <p className="text-center mt-8">
           Already have a account?{" "}
           <a
-            href="/signup"
+            href="/login"
             className="font-bold hover:underline cursor-pointer"
           >
             Log in
