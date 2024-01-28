@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Nav from "../components/Navb";
-import { redirect } from "react-router-dom";
+import { Navigate , redirect } from "react-router-dom";
 
 
 const Signup = () => {
@@ -27,7 +27,8 @@ const Signup = () => {
   };
 
   if (redirects) {
-    return redirect("signup");
+    return <Navigate replace to="/login"/>
+    
   }
 
   return (

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "../components/Navb";
-import { redirect } from "react-router-dom";
+import { Navigate, Route } from "react-router-dom";
 import axios from 'axios';
 
 const Login = (props) => {
@@ -9,6 +9,9 @@ const Login = (props) => {
   const [redirects, setRedirects] = useState(false);
   const [showPass, setShowPass] = useState(false);
 
+
+  
+  
   const submit = async (e) => {
     e.preventDefault();
 
@@ -23,14 +26,17 @@ const Login = (props) => {
     });
 
     const content = await response.json();
+  
 
     setRedirects(true);
-    props.setName(content.name);
+    // props.setName(content.name);
   };
 
   if (redirects) {
-    return redirect("/");
+    return <Navigate replace to="/"/>
+    
   }
+
 
   return (
     <>

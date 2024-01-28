@@ -1,7 +1,12 @@
 import { useState } from "react";
 
-function Nav() {
+function Nav(props) {
   const [open, setOpen] = useState(false);
+  // console.log(props.isUser)
+  // const token = loca
+  // console.log(token)
+  
+  
   return (
     <nav className="bg-gray-200  w-full    border-b border-gray-200 z-30 md:z-0">
       <div className="max-w-screen-xl flex flex-col md:flex-row flex-wrap items-start justify-between mx-auto p-4 ">
@@ -82,7 +87,8 @@ function Nav() {
             </li>
           </ul>
         </div>
-        <div
+        {!props.isUser?(
+          <div
           className={`flex flex-col md:flex-row    
           ${open ? "top-20 gap-3" : "hidden md:block"}
           `}
@@ -100,6 +106,22 @@ function Nav() {
             Signup
           </a>
         </div>
+        ):(
+          <div
+          className={`flex flex-col md:flex-row    
+          ${open ? "top-20 gap-3" : "hidden md:block"}
+          `}
+        >
+          <a
+            href="/login"
+            className="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-4 "
+          >
+            Logout
+          </a>
+          
+        </div>
+        )}
+        
       </div>
     </nav>
   );
