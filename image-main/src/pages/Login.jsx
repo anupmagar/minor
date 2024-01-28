@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import Nav from "../components/Navb";
-import { Navigate, Route } from "react-router-dom";
-import axios from 'axios';
+import React, { useState } from "react";
+
+import { Navigate } from "react-router-dom";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -9,9 +8,6 @@ const Login = (props) => {
   const [redirects, setRedirects] = useState(false);
   const [showPass, setShowPass] = useState(false);
 
-
-  
-  
   const submit = async (e) => {
     e.preventDefault();
 
@@ -26,21 +22,17 @@ const Login = (props) => {
     });
 
     const content = await response.json();
-  
 
     setRedirects(true);
-    // props.setName(content.name);
+    props.setIsUser(content.isUser);
   };
 
   if (redirects) {
-    return <Navigate replace to="/"/>
-    
+    return <Navigate replace to="/" />;
   }
-
 
   return (
     <>
-      <Nav />
       <div className="-z-10 shadow-md border-2 w-[25rem] felx  flex-col p-5 justify-center h-[25rem] px-10 absolute top-[50%] left-[50%]  translate-x-[-50%] translate-y-[-50%] ">
         <form
           onSubmit={submit}

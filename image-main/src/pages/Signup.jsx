@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import Nav from "../components/Navb";
-import { Navigate , redirect } from "react-router-dom";
-
+import { Navigate, Link } from "react-router-dom";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -27,13 +25,11 @@ const Signup = () => {
   };
 
   if (redirects) {
-    return <Navigate replace to="/login"/>
-    
+    return <Navigate replace to="/login" />;
   }
 
   return (
     <>
-      <Nav />
       <div className="-z-10 shadow-md border-2 w-[25rem] felx  flex-col p-5 justify-center h-[25rem] px-10 absolute top-[50%] left-[50%]  translate-x-[-50%] translate-y-[-50%] ">
         <form
           onSubmit={submit}
@@ -82,12 +78,12 @@ const Signup = () => {
         </form>
         <p className="text-center mt-8">
           Already have a account?{" "}
-          <a
-            href="/login"
+          <Link
+            to="/login"
             className="font-bold hover:underline cursor-pointer"
           >
             Log in
-          </a>
+          </Link>
         </p>
       </div>
     </>
