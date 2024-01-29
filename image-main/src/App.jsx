@@ -8,32 +8,31 @@ import Signup from "./pages/Signup";
 import Nav from "./components/Navb";
 
 function App() {
-  const [isUser, setIsUser] = useState("");
+  const [user, setUser] = useState("");
 
   useEffect(() => {
     (async () => {
       const response = await fetch("http://127.0.0.1:8000/api/user", {
-        headers: { "Content-Type": "application/json" ,
-        "Authorization": `Basic ${credentials}`,
-      },
-        //credentials: 'include'
-        
+        headers: {
+          "Content-Type": "application/json",
+          // Authorization: `Basic ${credentials}`,
+        },
+        credentials: "include",
       });
 
-      const content = await response.json();
-      console.log(content)
+      const token = await response.json();
+      console.log(token);
 
-      setIsUser(content.name);
-      // localStorage.setItem(content)
+      setUser(token);
     })();
   });
   return (
     <div className=" container ">
       <BrowserRouter>
-        <Nav isUser={isUser} setIsUser={setIsUser} />
+        <Nav user={user} setUser={setUser} />
         <Routes>
-          <Route index element={<Home isUser={isUser} />} />
-          <Route path="login" element={<Login setIsUser={setIsUser} />} />
+          <Route index element={<Home user={user} />} />
+          <Route path="login" element={<Login setUser={setUser} />} />
           <Route path="signup" element={<Signup />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
@@ -43,4 +42,3 @@ function App() {
 }
 
 export default App;
-

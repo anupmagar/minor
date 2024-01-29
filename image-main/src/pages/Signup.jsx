@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { Navigate, Link } from "react-router-dom";
 
 const Signup = () => {
@@ -8,10 +9,16 @@ const Signup = () => {
   const [redirects, setRedirects] = useState(false);
   const [showPass, setShowPass] = useState(false);
 
+  useEffect(() => {
+    if (redirects) {
+      return <Navigate replace to="/login" />;
+    }
+  }, [redirects]);
+
   const submit = async (e) => {
     e.preventDefault();
 
-    await fetch("http://127.0.0.1:8000/api/register", {
+    const response = await fetch("http://127.0.0.1:8000/api/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -21,12 +28,12 @@ const Signup = () => {
       }),
     });
 
-    setRedirects(true);
+    if (response.ok) {
+      setRedirects(true);
+    } else {
+      console.error("Signup failed");
+    }
   };
-
-  if (redirects) {
-    return <Navigate replace to="/login" />;
-  }
 
   return (
     <>
@@ -91,5 +98,3 @@ const Signup = () => {
 };
 
 export default Signup;
-
-
