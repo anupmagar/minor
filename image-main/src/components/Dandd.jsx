@@ -15,9 +15,9 @@ const Dandd = () => {
 
   // send files to the server
   const handleUpload = () => {
-    const formData = new FormData();
-    formData.append("Files", files);
-    console.log(formData.getAll());
+    // const formData = new FormData();
+    // formData.append("Files", files);
+    // console.log(formData.getAll());
     // fetch(
     //   "link", {
     //     method: "POST",

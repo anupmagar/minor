@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Nav(props) {
+function Nav({ user, setUser }) {
   const [open, setOpen] = useState(false);
   const logout = async () => {
     await fetch("http://127.0.0.1:8000/api/logout", {
@@ -8,7 +8,7 @@ function Nav(props) {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     });
-    props.setIsUser("");
+    setUser("");
   };
 
   return (
@@ -91,7 +91,7 @@ function Nav(props) {
             </li>
           </ul>
         </div>
-        {props.isUser === "" ? (
+        {user === "" ? (
           <div
             className={`flex flex-col md:flex-row    
           ${open ? "top-20 gap-3" : "hidden md:block"}

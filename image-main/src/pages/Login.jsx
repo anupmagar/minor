@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Navigate } from "react-router-dom";
 
-const Login = ({setIsUser}) => {
+const Login = ({ setIsUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirects, setRedirects] = useState(false);
@@ -20,11 +20,11 @@ const Login = ({setIsUser}) => {
         password,
       }),
     });
-
-    const content = await response.json();
-
-    setRedirects(true);
-    setIsUser(content.name);
+    if (response.ok) {
+      setRedirects(true);
+    } else {
+      console.error("Login failed");
+    }
   };
 
   if (redirects) {
@@ -86,4 +86,3 @@ const Login = ({setIsUser}) => {
 };
 
 export default Login;
-
