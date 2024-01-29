@@ -146,13 +146,20 @@ CORS_ALLOW_CREDENTIALS = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = 'media/'
+
+# STATICFILES_DIRS = [
+#     BASE_DIR.joinpath('image-main','dist', 'assets')
+#     #BASE_DIR / 'image-main/dist/assets',
+# ]
 
 STATICFILES_DIRS = [
-    BASE_DIR.joinpath('image-main','dist', 'assets')
-    #BASE_DIR / 'image-main/dist/assets',
+    BASE_DIR / 'static'
 ]
 
-STATIC_ROOT = os.path.join (BASE_DIR , "staticfiles")
+MEDIA_ROOT = 'media/images'
+
+#TATIC_ROOT = os.path.join (BASE_DIR , "staticfiles")
 
 # #STATICFILES_DIRS = (
 #     BASE_DIR.joinpath('image-main','dist')

@@ -3,7 +3,7 @@ import { useState } from "react";
 function Nav(props) {
   const [open, setOpen] = useState(false);
   const logout = async () => {
-    await fetch("http://localhost:8000/api/logout", {
+    await fetch("http://127.0.0.1:8000/api/logout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

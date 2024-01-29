@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Navigate } from "react-router-dom";
 
-const Login = (props) => {
+const Login = ({setIsUser}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirects, setRedirects] = useState(false);
@@ -24,7 +24,7 @@ const Login = (props) => {
     const content = await response.json();
 
     setRedirects(true);
-    props.setIsUser(content.isUser);
+    setIsUser(content.name);
   };
 
   if (redirects) {
@@ -86,3 +86,4 @@ const Login = (props) => {
 };
 
 export default Login;
+
