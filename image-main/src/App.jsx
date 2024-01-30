@@ -10,22 +10,6 @@ import Nav from "./components/Navb";
 function App() {
   const [user, setUser] = useState("");
 
-  useEffect(() => {
-    (async () => {
-      const response = await fetch("http://127.0.0.1:8000/api/user", {
-        headers: {
-          "Content-Type": "application/json",
-          // Authorization: `Basic ${credentials}`,
-        },
-        credentials: "include",
-      });
-
-      const token = await response.json();
-      console.log(token);
-
-      setUser(token);
-    })();
-  });
   return (
     <div className=" container ">
       <BrowserRouter>
