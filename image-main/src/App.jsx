@@ -10,22 +10,31 @@ import Nav from "./components/Navb";
 function App() {
   const [user, setUser] = useState("");
 
+
   useEffect(() => {
     (async () => {
-      const response = await fetch("http://127.0.0.1:8000/api/user", {
-        headers: {
-          "Content-Type": "application/json",
-          // Authorization: `Basic ${credentials}`,
-        },
-        credentials: "include",
-      });
-
-      const token = await response.json();
-      console.log(token);
-
-      setUser(token);
+      try {
+        const response = await fetch("http://127.0.0.1:8000/api/user", {
+          headers: {
+            "Content-Type": "application/json",
+            // Authorization: `Basic ${credentials}`,
+          },
+          credentials: "include",
+        });
+  
+        if (response.ok) {
+          const userData = await response.json(); // await the json() method
+          setUser(userData);
+          console.log(userData);
+        } else {
+          console.error(`Failed to fetch user data. Status: ${response.status}`);
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
     })();
-  });
+  }, []);
+  
   return (
     <div className=" container ">
       <BrowserRouter>

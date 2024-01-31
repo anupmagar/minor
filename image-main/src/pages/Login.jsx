@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Navigate } from "react-router-dom";
 
-const Login = ({ setIsUser }) => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirects, setRedirects] = useState(false);

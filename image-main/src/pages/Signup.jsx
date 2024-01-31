@@ -9,11 +9,7 @@ const Signup = () => {
   const [redirects, setRedirects] = useState(false);
   const [showPass, setShowPass] = useState(false);
 
-  useEffect(() => {
-    if (redirects) {
-      return <Navigate replace to="/login" />;
-    }
-  }, [redirects]);
+
 
   const submit = async (e) => {
     e.preventDefault();
@@ -32,6 +28,9 @@ const Signup = () => {
       setRedirects(true);
     } else {
       console.error("Signup failed");
+    }
+    if (redirects) {
+      return <Navigate replace to="/login" />;
     }
   };
 
