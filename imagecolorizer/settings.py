@@ -99,7 +99,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'colordb',
         'USER': 'root',
-        'PASSWORD': '6650509869a',
+        'PASSWORD': 'anup',
         'HOST':'127.0.0.1',
         'PORT':'3306',
     }
@@ -154,7 +154,7 @@ MEDIA_URL = 'media/'
 # ]
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    BASE_DIR / 'image-main/dist/assets'
 ]
 
 MEDIA_ROOT = 'media/images'
