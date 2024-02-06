@@ -5,7 +5,9 @@ from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.decorators import api_view
 from .serializers import UserSerializer, ProductSerializer
+from django.http import JsonResponse
 from .models import User, Product
+
 
 # Create your views here.
 class RegisterView(APIView):
@@ -77,23 +79,6 @@ class LogoutView(APIView):
         }
         return response
     
-
-
-# @api_view(['POST'])
-# class ImageView():
-#         products = Product.objects.all()
-#         serializer = ProductSerializer(data=request.data) 
-#     # def get(self, request, format=None):
-#     #     products = Product.objects.all()
-#     #     serializer = ProductSerializer(products, many=True)
-#     #     return Response(serializer.data)
-
-        
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         else:
-#             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
 
 class ImageView(APIView):
     def post(self, request, *args, **kwargs):
