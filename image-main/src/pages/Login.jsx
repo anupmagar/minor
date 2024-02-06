@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Navigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirects, setRedirects] = useState(false);
@@ -20,10 +20,12 @@ const Login = () => {
         password,
       }),
     });
-    if (response.ok) {
+
+    console.log(response);
+    const token = await response.json();
+    if (token) {
       setRedirects(true);
-    } else {
-      console.error("Login failed");
+      setUser(token);
     }
   };
 

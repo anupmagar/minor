@@ -9,8 +9,6 @@ const Signup = () => {
   const [redirects, setRedirects] = useState(false);
   const [showPass, setShowPass] = useState(false);
 
-
-
   const submit = async (e) => {
     e.preventDefault();
 
@@ -24,15 +22,11 @@ const Signup = () => {
       }),
     });
 
-    if (response.ok) {
-      setRedirects(true);
-    } else {
-      console.error("Signup failed");
-    }
-    if (redirects) {
-      return <Navigate replace to="/login" />;
-    }
+    setRedirects(true);
   };
+  if (redirects) {
+    return <Navigate replace to="/login" />;
+  }
 
   return (
     <>
