@@ -13,4 +13,5 @@ class User(AbstractUser):
 
 
 class Product(models.Model):
-    image = models.ImageField(upload_to='images',null=True, blank=True)
+    image = models.ImageField(upload_to='images/',default= None)
+    colorized_image = models.ImageField(upload_to='colorized_image/',blank=True, null= True)

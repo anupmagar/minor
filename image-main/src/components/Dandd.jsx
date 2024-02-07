@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 
 const Dandd = () => {
-  const [files, setFiles] = useState(null);
+  const [image, setImage] = useState(null);
   const inputRef = useRef();
 
   const handleDragOver = (event) => {
@@ -10,39 +10,41 @@ const Dandd = () => {
 
   const handleDrop = (event) => {
     event.preventDefault();
-    setFiles(event.dataTransfer.files);
+    setImage(event.dataTransfer.files);
   };
 
   // send files to the server
-  const handleUpload = () => {
-    // const formData = new FormData();
-    // formData.append("Files", files);
-    // console.log(formData.getAll());
-    // fetch(
-    //   "link", {
-    //     method: "POST",
-    //     body: formData
-    //   }
-    // )
-  };
+  async function uploadImage() {
+    console.log("Helelo");
+    console.log(image);
+    const formData = new FormData();
+    formData.append("image", image[0]);
 
-  if (files) {
+    const response = await fetch("http://127.0.0.1:8000/api/products/", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
+  }
+
+  if (image) {
     return (
       <div className="flex flex-col justify-center items-center rounded-2xl absolute top-[50%] left-[50%]  translate-x-[-50%] translate-y-[-50%]  w-80 shadow-2xl h-60">
         <ul>
-          {Array.from(files).map((file, idx) => (
-            <li key={idx}>{file.name}</li>
+          {Array.from(image).map((image, idx) => (
+            <li key={idx}>{image.name}</li>
           ))}
         </ul>
         <div className="mt-4">
           <button
-            onClick={() => setFiles(null)}
+            onClick={() => setImage(null)}
             className="bg-blue-500 mr-5 py-2 px-4 rounded-xl"
           >
             Cancel
           </button>
           <button
-            onClick={handleUpload}
+            onClick={uploadImage}
             className="bg-blue-500 px-4 py-2 rounded-xl "
           >
             Upload
@@ -63,7 +65,7 @@ const Dandd = () => {
       <input
         type="file"
         multiple
-        onChange={(event) => setFiles(event.target.files)}
+        onChange={(event) => setImage(event.target.files)}
         hidden
         accept="image/png, image/jpeg"
         ref={inputRef}

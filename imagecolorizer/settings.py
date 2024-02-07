@@ -147,6 +147,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR/"media"
 
 # STATICFILES_DIRS = [
 #     BASE_DIR.joinpath('image-main','dist', 'assets')
@@ -185,3 +186,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'api.User'
 
+# from django.conf import settings
+# from django.conf.urls.static import static
+
+# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

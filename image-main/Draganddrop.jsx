@@ -101,13 +101,11 @@
 
 // export default Draganddrop;
 
-
-
 import { useState, useRef } from "react";
 import "../App.css";
 import React from "react";
 
-{% csrf_token %}
+// {% csrf_token %}
 const Draganddrop = () => {
   const [image, setImage] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -131,11 +129,11 @@ const Draganddrop = () => {
 
   async function uploadImage(file) {
     const formData = new FormData();
-    formData.append('image', file);
+    formData.append("image", file);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/products/', {
-        method: 'POST',
+      const response = await fetch("http://127.0.0.1:8000/api/products/", {
+        method: "POST",
         body: formData,
       });
 
@@ -146,10 +144,10 @@ const Draganddrop = () => {
           url: data.url, // Assuming the server responds with the image URL
         });
       } else {
-        console.error('Failed to upload image:', response.statusText);
+        console.error("Failed to upload image:", response.statusText);
       }
     } catch (error) {
-      console.error('Error uploading image:', error);
+      console.error("Error uploading image:", error);
     }
   }
 
@@ -176,7 +174,7 @@ const Draganddrop = () => {
   return (
     <>
       <div
-        className={`container ${isDragging ? 'dragging' : ''}`}
+        className={`container ${isDragging ? "dragging" : ""}`}
         onDragOver={onDragOver}
         onDragLeave={onDragLeave}
         onDrop={onDrop}
