@@ -158,7 +158,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'image-main/dist/assets'
 ]
 
-MEDIA_ROOT = 'media/images'
+# MEDIA_ROOT = 'media'
 
 #TATIC_ROOT = os.path.join (BASE_DIR , "staticfiles")
 

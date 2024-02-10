@@ -23,9 +23,12 @@ const Dandd = () => {
     const response = await fetch("http://127.0.0.1:8000/api/products/", {
       method: "POST",
       body: formData,
-    })
-      .then((response) => response.json())
-      .catch((error) => console.log(error));
+    });
+    // .then((response) => console.log(response.json()))
+    // .catch((error) => console.log(error));
+
+    const imag_path = response.json();
+    console.log(imag_path);
   }
 
   if (image) {
